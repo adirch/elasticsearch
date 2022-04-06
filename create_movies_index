@@ -2,7 +2,14 @@ PUT movies
 {
   "mappings": {
       "properties": {
-        "name": {"type": "keyword"},
+        "name": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
         "genere": {"type": "keyword"},
         "date": {"type": "date"},
         "rating": {"type": "integer"}
