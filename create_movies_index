@@ -1,0 +1,11 @@
+PUT movies
+{
+  "mappings": {
+      "properties": {
+        "name": {"type": "keyword"},
+        "genere": {"type": "keyword"},
+        "date": {"type": "date"},
+        "rating": {"type": "integer"}
+      }
+  }
+}
