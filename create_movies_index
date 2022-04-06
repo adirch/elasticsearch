@@ -16,3 +16,42 @@ PUT movies
       }
   }
 }
+
+# dynamic_templates
+DELETE my-first-index
+PUT my-first-index
+{
+  "mappings": {
+    "dynamic_templates": [
+      {
+        "string_as_float": {
+          "match_mapping_type": "string",
+          "match": "float-*",
+          "mapping": {
+            "type": "float"
+          }
+        }
+      },
+      {
+        "string_as_fulltext": {
+          "match_mapping_type": "string",
+          "match": "full-*",
+          "mapping": {
+            "type": "text"
+          }
+        }
+      }
+    ]
+  }
+}
+
+PUT my-first-index/_doc/1
+{
+  "field": "1.23"
+}
+
+PUT my-first-index/_doc/2
+{
+  "float-field": "1.23"
+}
+GET my-first-index
